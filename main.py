@@ -24,3 +24,26 @@ pal = palindrome()
 result = pal.ispalindrome(10)
 print(result)
 
+# when implemented in leetcode this is the code i used
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+
+         """
+        if x < 0:
+            return False
+        div = 1
+        while x >= 10 * div:
+            div *= 10
+        while x:
+
+            right = x % 10
+            left = x // div
+            if left != right: return False
+
+            x = (x % div) // 10
+            div = div / 100
+        return True
+
